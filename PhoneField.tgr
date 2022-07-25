@@ -1,0 +1,9 @@
+trigger PhoneField on Account (before insert, before update ) {
+    list<Account> acclist=trigger.new;
+    for(Account acc:acclist){
+        if(acc.Phone==null){
+            acc.addError('Enter the phone number');
+        }
+    }
+
+}

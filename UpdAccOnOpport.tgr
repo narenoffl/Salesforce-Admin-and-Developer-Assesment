@@ -1,0 +1,8 @@
+trigger UpdAccOnOpport on Opportunity (after insert,after update) {
+	List<Account> acc = new List<Account>();
+    for(Opportunity opp : trigger.new){
+        if (opp.Opportunity_Status__c != null )
+            acc.add(new Account(Id = opp.AccountId,Account_Status__c = opp.Opportunity_Status__c));
+    }
+
+}
